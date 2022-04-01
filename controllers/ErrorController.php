@@ -3,16 +3,9 @@
 class errorController{
 
     public function index(){
-        echo "Controlador Usuarios, Accion index";
+        echo "<h1> La pagina que buscas no existe </h1>";
     }
 
-    public function registro(){
-        require_once 'views/usuario/registro.php';
-    }
-    public function save(){
-        if(isset($_POST)){
-            var_dump($_POST);
-        }
-    }
+   
 
 }

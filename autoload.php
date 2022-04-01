@@ -2,6 +2,8 @@
 
 function controller_autoload ($classname){
     include './controllers/'.$classname.'.php';
+    // echo "./controllers/.$classname.php";
+    // die;
 }
 spl_autoload_register('controller_autoload');
 

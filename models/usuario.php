@@ -52,9 +52,7 @@ class usuario{
      */ 
     public function setNombres($nombres)
     {
-        $this->nombres = $nombres;
-
-        return $this;
+        $this->nombres = $this->db->real_escape_string($nombres);
     }
 
     /**
@@ -72,9 +70,7 @@ class usuario{
      */ 
     public function setApellidos($apellidos)
     {
-        $this->apellidos = $apellidos;
-
-        return $this;
+        $this->apellidos = $this->db->real_escape_string($apellidos);
     }
 
     /**
@@ -92,9 +88,7 @@ class usuario{
      */ 
     public function setEmail($email)
     {
-        $this->email = $email;
-
-        return $this;
+        $this->email = $this->db->real_escape_string($email);
     }
 
     /**
@@ -112,9 +106,7 @@ class usuario{
      */ 
     public function setPassword($password)
     {
-        $this->password = $password;
-
-        return $this;
+        $this->password = password_hash($this->db->real_escape_string($password),PASSWORD_BCRYPT, ['cost'=>4]);
     }
 
     /**
@@ -132,18 +124,18 @@ class usuario{
      */ 
     public function setImagen($imagen)
     {
-        $this->imagen = $imagen;
-
-        return $this;
+        $this->imagen =  $this->db->real_escape_string($imagen);
     }
 
     public function save(){
-        $sql= "INSERT INTO usuarios VALUES (NULL, '{$this->getNombre()}', 
+        $sql= "INSERT INTO usuarios VALUES (NULL, 
+                '{$this->getNombres()}', 
                 '{$this->getApellidos()}',
                 '{$this->getEmail()}',
                 '{$this->getPassword()}',
-                '{$this->getImagen()}',
                 'user',NULL)";
-       $registrer = $this->db->query($sql);
+       $register = $this->db->query($sql);
+
+       return $register ? true : false;
     }
 }
