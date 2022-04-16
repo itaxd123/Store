@@ -144,7 +144,12 @@ a:hover{
 .form_container{
     width: 50%;
 }
-
+.alert_green{
+    color:green;
+}
+.alert_red{
+    color:red;
+}
 label,
 input[type="text"],
 input[type="password"],
@@ -330,3 +335,4 @@ button{
     background: #222222;
     border-top: 4px solid #01B1EA;
 }
+
